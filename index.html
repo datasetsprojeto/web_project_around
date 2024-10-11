@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Renato Soares Pereira" />
+  <meta name="keywords" content="HTML,CSS,JS" />
+  <meta name="description"
+    content="Around The U.S. - Desenvolvimento de um post gallery website com HTML, CSS E JS com paisagens dos Estados Unidos" />
+  <title>Around The U.S.</title>
+  <link rel="stylesheet" href="./pages/index.css">
+</head>
+
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="header__container-logo">
+        <img src="./images/Logo.png" alt="logo Around The US" class="header__logo">
+      </div>
+      <div class="header__profile">
+        <img src="./images/iccon-perfil.png" alt="An old man smiling" class="header__avatar">
+        <div class="header__container-info">
+        <div class="header__profile-information">
+          <h1 id="headerName" class="header__name">Jacque Cousteau</h1>
+          <img onclick="openModal()" src="./images/icon-editar.png" alt="edit icon image" class="header__icon-edit">
+        </div>
+        <p id="headerJob" class="header__job">Explorador</p>
+      </div>
+        <div class="header__container-button">
+          <div class="header__button"></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="main__container">
+        <div class="main__cards">
+
+          <div class="main__card">
+            <img src="./images/kirill-pershin-1088404-unsplash.jpg"
+              alt="A river around a bosque with a mountain in the background" class="main__image">
+            <div class="main__information">
+              <h2 class="main__title-image">Vale de Yosemite</h2>
+              <button id="changeCor " class="main__icon "></button>
+            </div>
+          </div>
+
+          <div class="main__card">
+            <img src="./images/kirill-pershin-1404681-unsplash.jpg"
+              alt="a lake with clear blue water and some rocks around it" class="main__image">
+            <div class="main__information">
+              <h2 class="main__title-image">Lago Louise</h2>
+              <button id="changeCor" class="main__icon"></button>
+            </div>
+          </div>
+
+          <div class="main__card">
+            <img src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Mountains with the sunrise in the background"
+              class="main__image">
+            <div class="main__information">
+              <h2 class="main__title-image">Montanhas Care...</h2>
+              <button id="changeCor" class="main__icon"></button>
+            </div>
+          </div>
+
+          <div class="main__card">
+            <img src="./images/kirill-pershin-1404681-unsplash2.jpg" alt="Mountains on a starry night"
+              class="main__image">
+            <div class="main__information">
+              <h2 class="main__title-image">Latemar</h2>
+              <button id="changeCor" class="main__icon"></button>
+            </div>
+          </div>
+
+          <div class="main__card">
+            <img src="./images/kirill-pershin-1556355-unsplash2.jpg" alt="A lake with mountains around"
+              class="main__image">
+            <div class="main__information">
+              <h2 class="main__title-image">Parque Nacional Vanoise</h2>
+              <button id="changeCor" class="main__icon"></button>
+            </div>
+          </div>
+
+          <div class="main__card">
+            <img src="./images/kirill-pershin-1088404-unsplash2.jpg"
+              alt="A lake with some canoe and a mountain in background" class="main__image">
+            <div class="main__information">
+              <h2 class="main__title-image">Lago di Braies</h2>
+              <button id="changeCor" class="main__icon"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__maker">© 2024 Around The U.S.</p>
+    </footer>
+
+    <div class="modal" id="modal">
+      <div class="modal__window">
+        <img onclick="closeModal()" src="./images/botonX.png" alt="Icon X" class="modal__button-close" id="close">
+        <h1 class="modal__title">Editar perfil</h1>
+        <form class="modal__form" id="modalForm">
+        <input id="inputName" type="text" placeholder="Name" required>
+        <input id="inputJob" type="text" placeholder="Job" required>
+        <button type="submit" id="modalButton" class="modal__button">Salvar</button>
+      </form>
+      </div>
+    </div>
+
+  </div>
+  <script src="./pages/index.js"></script>
+</body>
+
+</html>
