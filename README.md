@@ -6,4 +6,4 @@
 
 # Atualização: Nesse projeto, a maneira pela qual as imagens seram carregadas será atualizadas via JavaScript.
 
-# Link do projeto: 
+# Link do projeto: https://datasetsprojeto.github.io/web_project_around/
