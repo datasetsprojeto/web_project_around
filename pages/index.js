@@ -1,8 +1,8 @@
 const formElement = document.querySelector("#modal__form");
-let nameInput = document.querySelector("#input__name");
-let jobInput = document.querySelector("#input__job");
-let profileName = document.querySelector(".header__name");
-let profileJob = document.querySelector(".header__job");
+const nameInput = document.querySelector("#input__name");
+const jobInput = document.querySelector("#input__job");
+const profileName = document.querySelector(".header__name");
+const profileJob = document.querySelector(".header__job");
 
 //abre modal
 function openModal() {
