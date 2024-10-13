@@ -41,11 +41,11 @@
   text-align: left
 }
 
-#modalForm {
+#modal__form {
   text-align: center;
 }
 
-#inputName {
+#input__name {
   width: 358px;
   margin: 0 auto;
   margin-bottom: 29.74px;
@@ -59,7 +59,7 @@
   border-bottom: 1px solid #545454;
 }
 
-#inputJob {
+#input__job {
   width: 358px;
   margin: 0 auto;
   padding-bottom: 13.34px;
@@ -73,7 +73,7 @@
   border-bottom: 1px solid #545454;
 }
 
-#modalButton {
+#modal__button {
   width: 358px;
   padding-bottom: 18.49px;
   padding-top: 13.66px;
@@ -91,7 +91,7 @@
   align-items: center;
 }
 
-#modalButton:hover {
+#modal__button:hover {
   opacity: 0.5;
 }
 

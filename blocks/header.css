@@ -74,15 +74,13 @@
 
 .header__container-button {
   cursor: pointer;
-  max-width: 150px;
-  width: 100%;
+  width: 150px;
   height: 50px;
   margin-left: 165px;
 }
 
 .header__button {
-  max-width: 150px;
-  width: 100%;
+  width: 150px;
   height: 50px;
   background-image: url("../images/boton-add-pictures.png");
 }
@@ -95,7 +93,7 @@
   opacity: 0.5;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1024px) {
   .header__container-logo {
    max-width: 800px;
    width: 100%;
@@ -120,7 +118,14 @@
 
 }
 
-@media screen and (max-width: 607px) {
+@media screen and (max-width: 799px) {
+  .header__container-button {
+    margin-left: 60px;
+  }
+
+}
+
+@media screen and (max-width: 780px) {
   .header__container-logo {
     max-width: 282px;
     width: 100%;
@@ -185,8 +190,7 @@
   }
 
   .header__container-button {
-    max-width: 282px;
-    width: 100%;
+    width: 282px;
     margin: 0 auto;
     margin-top: 36px;
     margin-bottom: 36px;
@@ -197,8 +201,7 @@
     background-repeat: no-repeat;
     background-position: center;
     border: 2px solid #ffffff;
-    max-width: 282px;
-    width: 100%;
+    width: 282px;
     height: 50px;
   }
 
