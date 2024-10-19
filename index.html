@@ -28,7 +28,7 @@
         <p id="header__job" class="header__job">Explorador</p>
       </div>
         <div class="header__container-button">
-          <div class="header__button"></div>
+          <div onclick="openPopup()" class="header__button"></div>
         </div>
       </div>
     </header>
@@ -105,6 +105,18 @@
         <input id="input__name" type="text" placeholder="Name" required>
         <input id="input__job" type="text" placeholder="Job" required>
         <button type="submit" id="modal__button" class="modal__button">Salvar</button>
+      </form>
+      </div>
+    </div>
+
+    <div class="popup" id="popup">
+      <div class="popup__window">
+        <img onclick="closePopup()" src="./images/botonX.png" alt="Icon X" class="popup__button-close" id="close">
+        <h1 class="popup__title">Novo local</h1>
+        <form class="popup__form" id="popup__form">
+        <input id="input__title" type="text" placeholder="Título" required>
+        <input id="input__link-image" type="text" placeholder="Link de imagem" required>
+        <button type="submit" id="popup__button" class="popup__button">Criar</button>
       </form>
       </div>
     </div>
