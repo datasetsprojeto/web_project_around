@@ -10,6 +10,7 @@ const titleInput = document.querySelector("#input__title");
 const linkInput = document.querySelector("#input__link-image");
 const addCard = document.querySelector("#popup__button");
 
+const cardTemplate = document.querySelector("#main__template").content;
 
 const containerCards = document.querySelector(".main__cards");
 
@@ -17,6 +18,7 @@ const cardElement = document.querySelector(".main__card");
 const image = document.querySelector(".main__image");
 const titleImage = document.querySelector(".main__title-image");
 const heart = document.querySelector('#main__icon');
+const deleteCard = document.querySelector('#main__button-delete');
 
 const expandedPopup = document.querySelector(".popup-expanded");
 const expandedImage = document.querySelector(".popup-expanded__image");
@@ -97,26 +99,24 @@ formElement.addEventListener("submit", handleProfileFormSubmit);
 // criando um novo card
 function createCard(card) {
 
-  const cardTemplate = document.querySelector("#main__template").content;
   const cardElement = cardTemplate.querySelector(".main__card").cloneNode(true);
 
   cardElement.querySelector(".main__title-image").textContent = card.name;
   cardElement.querySelector(".main__image").setAttribute("src", card.link);
   cardElement.querySelector(".main__image").setAttribute("alt", card.name);
-  cardElement.querySelector(".main__icon").addEventListener('click', function (event) {
-    event.target.classList.toggle("main__icon_black-heart");
+  // alteração da cor ao curtir
+  cardElement.querySelector(".main__icon").addEventListener('click', function (handleLike) {
+    handleLike.target.classList.toggle("main__icon_black-heart");
   });
   cardElement.querySelector("#main__image").addEventListener("click", function (event) {
-    console.log("Clicou na imagem duas vezes");
-    expandedPopup.querySelector(".popup-expanded__image").setAttribute("src", card.link);
-    console.log(expandedPopup.querySelector(".popup-expanded__image"));
-    expandedPopup.querySelector(".popup-expanded__image-name").textContent = card.name;
-    console.log(expandedPopup.querySelector(".popup-expanded__image-name"));
-    expandedPopup.classList.add('popup-expanded_oppened');
-    console.log(expandedPopup.classList.add('popup-expanded_oppened'));
+  expandedPopup.querySelector(".popup-expanded__image").setAttribute("src", card.link);
+  expandedPopup.querySelector(".popup-expanded__image-name").textContent = card.name;
+  expandedPopup.classList.add('popup-expanded_oppened');
+
   });
-  cardElement.querySelector(".main__button-delete").addEventListener("click", function (event) {
-    event.target.parentElement.remove();
+  // remover cards
+  cardElement.querySelector(".main__button-delete").addEventListener("click", function (removeCard) {
+    removeCard.target.parentElement.remove();
   })
   return cardElement
 }
@@ -125,6 +125,7 @@ for (const card of initialCards) {
   containerCards.prepend(newCard);
 }
 
+// adicionar novos cards
 function addNewImageCard(evt) {
   evt.preventDefault()
   if (titleInput.value != "" && linkInput.value != "") {
@@ -133,6 +134,7 @@ function addNewImageCard(evt) {
       link: linkInput.value,
     })
     containerCards.prepend(newCards);
+    closePopup()
     titleImage.value = "";
     linkInput.value = "";
   }
