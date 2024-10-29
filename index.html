@@ -8,7 +8,8 @@
   <meta name="keywords" content="HTML,CSS,JS" />
   <meta name="description"
     content="Around The U.S. - Desenvolvimento de um post gallery website com HTML, CSS E JS com paisagens dos Estados Unidos" />
-  <title>Around The U.S.</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Around The U.S.</title>
   <link rel="stylesheet" href="./pages/index.css">
 </head>
 
@@ -21,12 +22,12 @@
       <div class="header__profile">
         <img src="./images/iccon-perfil.png" alt="An old man smiling" class="header__avatar">
         <div class="header__container-info">
-        <div class="header__profile-information">
-          <h1 id="header__name" class="header__name">Jacque Cousteau</h1>
-          <img onclick="openModal()" src="./images/icon-editar.png" alt="edit icon image" class="header__icon-edit">
+          <div class="header__profile-information">
+            <h1 id="header__name" class="header__name">Jacque Cousteau</h1>
+            <img onclick="openModal()" src="./images/icon-editar.png" alt="edit icon image" class="header__icon-edit">
+          </div>
+          <p id="header__job" class="header__job">Explorador</p>
         </div>
-        <p id="header__job" class="header__job">Explorador</p>
-      </div>
         <div class="header__container-button">
           <div onclick="openPopup()" class="header__button"></div>
         </div>
@@ -34,64 +35,28 @@
     </header>
 
     <main class="main">
+
       <section class="main__container">
-        <div class="main__cards">
 
-          <div class="main__card">
-            <img src="./images/kirill-pershin-1088404-unsplash.jpg"
-              alt="A river around a bosque with a mountain in the background" class="main__image">
-            <div class="main__information">
-              <h2 class="main__title-image">Vale de Yosemite</h2>
-              <button id="main__icon-black " class="main__icon "></button>
-            </div>
-          </div>
+        <ul id="main__cards" class="main__cards">
 
-          <div class="main__card">
-            <img src="./images/kirill-pershin-1404681-unsplash.jpg"
-              alt="a lake with clear blue water and some rocks around it" class="main__image">
-            <div class="main__information">
-              <h2 class="main__title-image">Lago Louise</h2>
-              <button id="main__icon-black" class="main__icon"></button>
-            </div>
-          </div>
+        </ul>
 
-          <div class="main__card">
-            <img src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Mountains with the sunrise in the background"
-              class="main__image">
-            <div class="main__information">
-              <h2 class="main__title-image">Montanhas Carecas</h2>
-              <button id="main__icon-black" class="main__icon"></button>
-            </div>
-          </div>
-
-          <div class="main__card">
-            <img src="./images/kirill-pershin-1404681-unsplash2.jpg" alt="Mountains on a starry night"
-              class="main__image">
-            <div class="main__information">
-              <h2 class="main__title-image">Latemar</h2>
-              <button id="main__icon-black" class="main__icon"></button>
-            </div>
-          </div>
-
-          <div class="main__card">
-            <img src="./images/kirill-pershin-1556355-unsplash2.jpg" alt="A lake with mountains around"
-              class="main__image">
-            <div class="main__information">
-              <h2 class="main__title-image">Parque Nacional Vanoise</h2>
-              <button id="main__icon-black" class="main__icon"></button>
-            </div>
-          </div>
-
-          <div class="main__card">
-            <img src="./images/kirill-pershin-1088404-unsplash2.jpg"
-              alt="A lake with some canoe and a mountain in background" class="main__image">
-            <div class="main__information">
-              <h2 class="main__title-image">Lago di Braies</h2>
-              <button id="main__icon-black" class="main__icon"></button>
-            </div>
-          </div>
+        <template id="main__template">
+      <li class="main__card">
+        <img id="main__button-delete" src="../images/Trash.svg" alt="delete button" class="main__button-delete">
+        <img src=""
+          alt="image" class="main__image" id="main__image">
+        <div class="main__information">
+          <h2 class="main__title-image"></h2>
+          <button id="main__icon-black " class="main__icon ">
+          </button>
         </div>
+      </li>
+    </template>
+
       </section>
+
     </main>
     <footer class="footer">
       <p class="footer__maker">© 2024 Around The U.S.</p>
@@ -102,10 +67,10 @@
         <img onclick="closeModal()" src="./images/botonX.png" alt="Icon X" class="modal__button-close" id="close">
         <h1 class="modal__title">Editar perfil</h1>
         <form class="modal__form" id="modal__form">
-        <input id="input__name" type="text" placeholder="Name" required>
-        <input id="input__job" type="text" placeholder="Job" required>
-        <button type="submit" id="modal__button" class="modal__button">Salvar</button>
-      </form>
+          <input id="input__name" type="text" placeholder="Name" required>
+          <input id="input__job" type="text" placeholder="Job" required>
+          <button type="submit" id="modal__button" class="modal__button">Salvar</button>
+        </form>
       </div>
     </div>
 
@@ -113,13 +78,28 @@
       <div class="popup__window">
         <img onclick="closePopup()" src="./images/botonX.png" alt="Icon X" class="popup__button-close" id="close">
         <h1 class="popup__title">Novo local</h1>
-        <form class="popup__form" id="popup__form">
-        <input id="input__title" type="text" placeholder="Título" required>
-        <input id="input__link-image" type="text" placeholder="Link de imagem" required>
-        <button type="submit" id="popup__button" class="popup__button">Criar</button>
-      </form>
+        <form class="popup__form" id="popup__form popup__form-add-card">
+          <input id="input__title" type="text" name="title" placeholder="Título" required>
+          <input id="input__link-image" type="url" name="url" placeholder="Link de imagem" required>
+          <button onclick="closePopup()" type="submit" id="popup__button" class="popup__button">Criar</button>
+        </form>
       </div>
     </div>
+
+    <div class="popup-expanded" id="popup-expanded">
+      <div class="popup-expanded__box">
+        <button
+          class="popup-expanded__button-close"
+          type="button"
+          id="popup-expanded__button-close"
+        >
+          <img onclick="closePopupImage()" src="./images/botonX.png" alt="closed button" />
+        </button>
+        <img class="popup-expanded__image" src="" alt="Image" />
+        <p class="popup-expanded__image-name"></p>
+      </div>
+    </div>
+
 
   </div>
   <script src="./pages/index.js"></script>
