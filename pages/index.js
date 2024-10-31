@@ -96,6 +96,15 @@ function handleProfileFormSubmit(evt) {
 
 formElement.addEventListener("submit", handleProfileFormSubmit);
 
+// alteração da cor ao curtir
+function handleLike(event) {
+  event.target.classList.toggle("main__icon_black-heart");
+}
+// remoção de cards
+function removeCard(event) {
+  event.target.parentElement.remove();
+}
+
 // criando um novo card
 function createCard(card) {
 
@@ -105,9 +114,7 @@ function createCard(card) {
   cardElement.querySelector(".main__image").setAttribute("src", card.link);
   cardElement.querySelector(".main__image").setAttribute("alt", card.name);
   // alteração da cor ao curtir
-  cardElement.querySelector(".main__icon").addEventListener('click', function (handleLike) {
-    handleLike.target.classList.toggle("main__icon_black-heart");
-  });
+  cardElement.querySelector(".main__icon").addEventListener('click', handleLike);
   cardElement.querySelector("#main__image").addEventListener("click", function (event) {
   expandedPopup.querySelector(".popup-expanded__image").setAttribute("src", card.link);
   expandedPopup.querySelector(".popup-expanded__image-name").textContent = card.name;
@@ -115,9 +122,7 @@ function createCard(card) {
 
   });
   // remover cards
-  cardElement.querySelector(".main__button-delete").addEventListener("click", function (removeCard) {
-    removeCard.target.parentElement.remove();
-  })
+  cardElement.querySelector(".main__button-delete").addEventListener('click', removeCard);
   return cardElement
 }
 for (const card of initialCards) {
