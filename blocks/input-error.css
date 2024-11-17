@@ -1,0 +1,56 @@
+#input__message1 {
+margin-bottom: 30px;
+}
+#input__message2 {
+  margin-bottom: 30px;
+}
+#input__message3 {
+  margin-bottom: 30px;
+}
+#input__message4 {
+  margin-bottom: 30px;
+}
+
+.input__message_error{
+margin: 0;
+text-align: start;
+}
+
+.input-error {
+  margin: 0 auto;
+  display: none;
+}
+
+.input-error-show {
+  margin: 0 auto;
+  margin-top: 5px;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 358px;
+  display: block;
+  font-family: "Inter Regular", sans-serif;
+  font-size: 12px;
+  color: red;
+}
+
+.valido {
+  border-bottom: 1px solid green;
+}
+
+.invalido {
+  border-bottom: 1px solid red;
+}
+
+input:valid {
+  width: 100%;
+  max-width: 358px;
+  border: none;
+  border-bottom: 1px solid green;
+}
+
+input:invalid {
+  width: 100%;
+  max-width: 358px;
+  border: none;
+  border-bottom: 1px solid red;
+}

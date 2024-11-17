@@ -27,8 +27,8 @@
 
 .modal__title {
   width: 358px;
-  margin: 0;
-  margin: auto;
+  margin: 0 auto;
+  margin-bottom: 30px;
   align-self: flex-start;
   margin-top: 34px;
   margin-bottom: 54px;
@@ -45,10 +45,10 @@
   text-align: center;
 }
 
-#input__name {
+.input__name {
   width: 358px;
   margin: 0 auto;
-  margin-bottom: 29.74px;
+  margin-bottom: 5px;
   padding-bottom: 13.26px;
   color: #000;
   font-family: "Inter", sans-serif;
@@ -59,11 +59,12 @@
   border-bottom: 1px solid #545454;
 }
 
-#input__job {
+
+.input__job {
   width: 358px;
   margin: 0 auto;
   padding-bottom: 13.34px;
-  margin-bottom: 48px;
+  margin-top: 18px;
   color: #000;
   font-family: "Inter", sans-serif;
   font-size: 1.125rem;
@@ -73,11 +74,12 @@
   border-bottom: 1px solid #545454;
 }
 
-#modal__button {
+.modal__button {
   width: 358px;
   padding-bottom: 18.49px;
   padding-top: 13.66px;
   margin: 0 auto;
+  margin-top: 18px;
   margin-bottom: 36.51px;
   background-color: #000;
   border-radius: 2px;
@@ -132,6 +134,7 @@
 
   }
 
+
   #input__job {
     padding: 0;
     padding-bottom: 9px;
@@ -142,6 +145,7 @@
 
   }
 
+
   #modal__button {
     margin: 0;
     margin-top: 46px;
@@ -151,5 +155,6 @@
     padding-top: 14px;
   }
 }
+
 
 

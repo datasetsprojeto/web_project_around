@@ -46,10 +46,9 @@
   text-align: center;
 }
 
-#input__title {
+.input__title {
   width: 358px;
   margin: 0 auto;
-  margin-bottom: 29.74px;
   padding-bottom: 13.26px;
   color: #000;
   font-family: "Inter", sans-serif;
@@ -60,11 +59,11 @@
   border-bottom: 1px solid #545454;
 }
 
-#input__link-image {
+.input__link-image {
   width: 358px;
   margin: 0 auto;
-  padding-bottom: 13.34px;
-  margin-bottom: 48px;
+  padding-bottom: 5px;
+  margin-bottom: 18px;
   color: #000;
   font-family: "Inter", sans-serif;
   font-size: 0.875rem;
@@ -79,6 +78,7 @@
   padding-bottom: 18.49px;
   padding-top: 13.66px;
   margin: 0 auto;
+  margin-top: 18px;
   margin-bottom: 36.51px;
   background-color: #000;
   border-radius: 2px;

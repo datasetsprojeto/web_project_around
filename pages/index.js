@@ -105,6 +105,15 @@ function removeCard(event) {
   event.target.parentElement.remove();
 }
 
+// fechamento via ESC
+document.addEventListener("keydown", function(evt) {
+  if (evt.key === "Escape") {
+    closeModal();
+    closePopup();
+    expandedPopup.classList.remove('popup-expanded_oppened');
+  }
+})
+
 // criando um novo card
 function createCard(card) {
 
@@ -119,6 +128,13 @@ function createCard(card) {
   expandedPopup.querySelector(".popup-expanded__image").setAttribute("src", card.link);
   expandedPopup.querySelector(".popup-expanded__image-name").textContent = card.name;
   expandedPopup.classList.add('popup-expanded_oppened');
+  //fecha imagem extendia com click fora de sua area
+  expandedPopup.addEventListener('click', function(e) {
+    if (e.target == this) {
+      closePopupImage()
+    }
+  });
+
 
   });
   // remover cards
@@ -146,8 +162,6 @@ function addNewImageCard(evt) {
 }
 
 popupForm.addEventListener("submit", addNewImageCard);
-
-
 
 
 

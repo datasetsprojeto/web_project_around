@@ -49,6 +49,7 @@
   cursor: pointer;
 }
 
+
 .main__button-delete:hover {
   opacity: 0.5;
 }
