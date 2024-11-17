@@ -23,6 +23,7 @@
   border-radius: 10px;
   margin: 0 auto;
   text-align: center;
+  z-index: 3;
 }
 
 .modal__title {

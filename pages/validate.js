@@ -1,14 +1,14 @@
 enableValidattion({
   formElement: "form",
   inputElement: "input",
-  submitButtonSelector: ".popup__button",
   buttonErrorClass: "form__btn_disabled",
-  inputErrorClass: ".input__message_error",
+  inputErrorClass: "invalido",
   elementErrorClass: "input-error-show"
 });
 
 function addErrorMessage(input, errorElement, config) {
   const errorMessage = input.validationMessage;
+  input.classList.add(config.inputErrorClass)
   errorElement.textContent = errorMessage
   errorElement.classList.add(config.elementErrorClass)
   errorElement.classList.add(config.elementErrorClass)
@@ -43,9 +43,11 @@ function checkIsValid(event, config, form) {
     if (errorElement.tagName !== "BUTTON") {
     removeErrorMessage(errorElement, config);
     }
-
     disableButton(button, config);
-  }
+     }
+     if(input.tagName === "") {
+      disableButton(button, config);
+     }
 }
 
 function enableValidattion(config) {

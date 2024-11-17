@@ -52,30 +52,48 @@ const initialCards = [
   },
 ];
 
+function closeOnClick(event) {
+  if(event.target.classList[0] == "modal") {
+    closeModal();
+  }
+  if(event.target.classList[0] == "popup") {
+    closePopup();
+  }
+  }
 
 
 //opeen modal
 function openModal() {
-  const openModal = document.getElementById('.modal');
-  document.getElementById('modal').style.display = 'flex';
+  const openModal = document.getElementById('modal');
+  openModal.style.display = 'flex';
+  openModal.addEventListener("click", closeOnClick)
+  nameInput.classList.add("input-bottom");
+  jobInput.classList.add("input-bottom");
 }
 
 //close modal
 function closeModal() {
-  const closeModal = document.getElementById('.modal');
-  document.getElementById('modal').style.display = 'none';
+  const closeModal = document.getElementById('modal');
+  closeModal.style.display = 'none';
+  openModal.removeEventListener("click", closeOnClick)
 }
 
 //open popup
 function openPopup() {
-  const openPopup = document.getElementById('.popup');
-  document.getElementById('popup').style.display = 'flex';
+  const openPopup = document.getElementById('popup');
+  openPopup.style.display = 'flex';
+  titleInput.classList.add("input-bottom");
+  linkInput.classList.add("input-bottom");
+  titleInput.value = "";
+  linkInput.value = "";
+  openPopup.addEventListener("click", closeOnClick)
 }
 
 //close popup
 function closePopup() {
-  const closePopup = document.getElementById('.popup');
-  document.getElementById('popup').style.display = 'none';
+  const closePopup = document.getElementById('popup');
+  closePopup.style.display = 'none';
+  openPopup.removeEventListener("click", closeOnClick)
 }
 
 //close popup Image
@@ -113,6 +131,9 @@ document.addEventListener("keydown", function(evt) {
     expandedPopup.classList.remove('popup-expanded_oppened');
   }
 })
+
+
+
 
 // criando um novo card
 function createCard(card) {

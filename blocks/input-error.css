@@ -1,19 +1,22 @@
 #input__message1 {
-margin-bottom: 30px;
+  margin-bottom: 30px;
 }
+
 #input__message2 {
   margin-bottom: 30px;
 }
+
 #input__message3 {
   margin-bottom: 30px;
 }
+
 #input__message4 {
   margin-bottom: 30px;
 }
 
-.input__message_error{
-margin: 0;
-text-align: start;
+.input__message_error {
+  margin: 0;
+  text-align: start;
 }
 
 .input-error {
@@ -33,12 +36,24 @@ text-align: start;
   color: red;
 }
 
+.input-bottom {
+  border: none;
+  border-bottom: 1px solid grey;
+  width: 100%;
+  max-width: 358px;
+  padding-bottom: 13.04px;
+}
+
 .valido {
   border-bottom: 1px solid green;
 }
 
 .invalido {
+  width: 100%;
+  max-width: 358px;
+  border: none;
   border-bottom: 1px solid red;
+  padding-bottom: 13.04px;
 }
 
 input:valid {
@@ -46,11 +61,13 @@ input:valid {
   max-width: 358px;
   border: none;
   border-bottom: 1px solid green;
+  padding-bottom: 13.04px;
 }
 
-input:invalid {
+/* input:invalid {
   width: 100%;
   max-width: 358px;
   border: none;
   border-bottom: 1px solid red;
-}
+  padding-bottom: 13.04px;
+} */
