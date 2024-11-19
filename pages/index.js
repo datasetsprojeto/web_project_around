@@ -66,7 +66,7 @@ function closeOnClick(event) {
 function openModal() {
   const openModal = document.getElementById('modal');
   openModal.style.display = 'flex';
-  openModal.addEventListener("click", closeOnClick)
+  openModal.addEventListener("click", closeOnClick);
   nameInput.classList.add("input-bottom");
   jobInput.classList.add("input-bottom");
 }
@@ -75,7 +75,7 @@ function openModal() {
 function closeModal() {
   const closeModal = document.getElementById('modal');
   closeModal.style.display = 'none';
-  openModal.removeEventListener("click", closeOnClick)
+  closeModal.removeEventListener("click", closeOnClick);
 }
 
 //open popup
@@ -86,14 +86,14 @@ function openPopup() {
   linkInput.classList.add("input-bottom");
   titleInput.value = "";
   linkInput.value = "";
-  openPopup.addEventListener("click", closeOnClick)
+  openPopup.addEventListener("click", closeOnClick);
 }
 
 //close popup
 function closePopup() {
   const closePopup = document.getElementById('popup');
   closePopup.style.display = 'none';
-  openPopup.removeEventListener("click", closeOnClick)
+  closePopup.removeEventListener("click", closeOnClick);
 }
 
 //close popup Image

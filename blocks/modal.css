@@ -21,7 +21,6 @@
   flex-direction: column;
   background-color: #fff;
   border-radius: 10px;
-  margin: 0 auto;
   text-align: center;
   z-index: 3;
 }
@@ -32,7 +31,6 @@
   margin-bottom: 30px;
   align-self: flex-start;
   margin-top: 34px;
-  margin-bottom: 54px;
   color: #000;
   font-family: "Inter", sans-serif;
   font-size: 1.5rem;
