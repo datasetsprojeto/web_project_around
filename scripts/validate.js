@@ -8,6 +8,8 @@ enableValidattion({
 
 function addErrorMessage(input, errorElement, config) {
   const errorMessage = input.validationMessage;
+  console.log(input.validationMessage)
+  console.log(validationMessage)
   input.classList.add(config.inputErrorClass)
   errorElement.textContent = errorMessage
   errorElement.classList.add(config.elementErrorClass)
@@ -45,7 +47,7 @@ function checkIsValid(event, config, form) {
     }
     disableButton(button, config);
      }
-     if(input.tagName === "") {
+     if(inputElement.tagName === "") {
       disableButton(button, config);
      }
 }

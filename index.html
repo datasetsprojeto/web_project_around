@@ -24,12 +24,12 @@
         <div class="header__container-info">
           <div class="header__profile-information">
             <h1 id="header__name" class="header__name">Jacque Cousteau</h1>
-            <img onclick="openModal()"src="./images/icon-editar.png" alt="edit icon image" class="header__icon-edit">
+            <img src="./images/icon-editar.png" alt="edit icon image" class="header__icon-edit">
           </div>
           <p id="header__job" class="header__job">Explorador</p>
         </div>
         <div class="header__container-button">
-          <div onclick="openPopup()" class="header__button"></div>
+          <div class="header__button"></div>
         </div>
       </div>
     </header>
@@ -44,7 +44,7 @@
 
         <template id="main__template">
       <li class="main__card">
-        <img id="main__button-delete" src="../images/Trash.svg" alt="delete button" class="main__button-delete">
+        <div id="main__button-delete" alt="delete button" class="main__button-delete"> </div>
         <img src=""
           alt="image" class="main__image" id="main__image">
         <div class="main__information">
@@ -64,7 +64,7 @@
 
     <div class="modal" id="modal">
       <div class="modal__window">
-        <img onclick="closeModal()" src="./images/botonX.png" alt="Icon X" class="modal__button-close">
+        <img src="./images/botonX.png" alt="Icon X" class="modal__button-close">
         <h1 class="modal__title">Editar perfil</h1>
         <form class="modal__form" id="modal__form">
           <input id="input__name" class="modal__form-input" type="text" placeholder="Name"  minlength="2" maxlength="40"  required>
@@ -78,7 +78,7 @@
 
     <div class="popup" id="popup">
       <div class="popup__window">
-        <img onclick="closePopup()" src="./images/botonX.png" alt="Icon X" class="popup__button-close">
+        <img src="./images/botonX.png" alt="Icon X" class="popup__button-close">
         <h1 class="popup__title">Novo local</h1>
         <form class="popup__form" id="popup__form popup__form-add-card">
           <input id="input__title" class="popup__form-input" type="text" name="title" placeholder="Título"  minlength="2" maxlength="30"  required>
@@ -98,7 +98,7 @@
           type="button"
           id="popup-expanded__button-close"
         >
-          <img onclick="closePopupImage()" src="./images/botonX.png" alt="closed button" />
+          <img src="./images/botonX.png" alt="closed button" />
         </button>
         <img class="popup-expanded__image" src=" " alt="Image" />
         <p class="popup-expanded__image-name"></p>
@@ -107,8 +107,8 @@
 
 
   </div>
-  <script src="./pages/index.js"></script>
-  <script src="./pages/validate.js"></script>
+  <script type="module" src="./scripts/index.js"></script>
+  <script type="module" src="./scripts/validate.js"></script>
 </body>
 
 </html>
