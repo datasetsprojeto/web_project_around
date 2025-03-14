@@ -1,8 +1,7 @@
 export default class FormValidator {
-  constructor(config, formSelector) {
+  constructor(config, formElement) {
     this._config = config;
-    this._formSelector = formSelector;
-    this._form = this._getForm();
+    this._form = formElement; // Recebe o elemento do DOM diretamente
     this._inputs = Array.from(this._form.querySelectorAll(this._config.inputSelector));
     this._button = this._form.querySelector(this._config.submitButtonSelector);
 
@@ -10,15 +9,6 @@ export default class FormValidator {
     if (!this._button) {
       throw new Error(`Botão de submit com seletor ${this._config.submitButtonSelector} não encontrado.`);
     }
-  }
-
-  // Busca o formulário no DOM usando o seletor
-  _getForm() {
-    const form = document.querySelector(this._formSelector);
-    if (!form) {
-      throw new Error(`Formulário com seletor ${this._formSelector} não encontrado.`);
-    }
-    return form;
   }
 
   _showInputError(inputElement, errorElement) {
