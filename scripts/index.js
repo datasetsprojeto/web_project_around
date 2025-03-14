@@ -93,7 +93,7 @@ const formValidatorProfile = new FormValidator({
   formSelector: "#modal__form",
   inputSelector: ".modal__form-input", // Seletores dos campos de entrada
   submitButtonSelector: "#modal__button", // ID do botão de submit
-  inactiveButtonClass: "form__btn_disabled",
+  inactiveButtonClass: "button_disabled",
   inputErrorClass: "input__error",
   errorClass: "input__error"
 }, "#modal__form");
@@ -105,7 +105,7 @@ const formValidatorCard = new FormValidator({
   formSelector: "#popup__form",
   inputSelector: ".popup__form-input", // Seletores dos campos de entrada
   submitButtonSelector: "#popup__button", // ID do botão de submit
-  inactiveButtonClass: "form__btn_disabled",
+  inactiveButtonClass: "button_disabled",
   inputErrorClass: "input__error",
   errorClass: "input__error"
 }, "#popup__form");
