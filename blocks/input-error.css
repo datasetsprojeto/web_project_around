@@ -14,12 +14,22 @@
   margin-bottom: 30px;
 }
 
-.input__message_error {
+.modal__message_error {
   margin: 0;
   text-align: start;
 }
 
-.input-error {
+.modal-error {
+  margin: 0 auto;
+  display: none;
+}
+
+.popup__message_error {
+  margin: 0;
+  text-align: start;
+}
+
+.popup-error {
   margin: 0 auto;
   display: none;
 }
