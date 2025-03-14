@@ -68,10 +68,10 @@
         <h1 class="modal__title">Editar perfil</h1>
         <form class="modal__form" id="modal__form">
           <input id="input__name" class="modal__form-input" type="text" placeholder="Name"  minlength="2" maxlength="40"  required>
-          <p id="input__message1" class="input__message_error input__message1_error"></p>
+          <p id="input__message1" class="input__message_error input__message_error_1"></p>
           <input id="input__job" class="modal__form-input" type="text" placeholder="Job"  minlength="2" maxlength="200"  required>
-          <p id="input__message2" class="input__message_error input__message2_error"></p>
-          <button type="submit" id="modal__button" class="modal__button button form__btn_disabled" disabled>Salvar</button>
+          <p id="input__message2" class="input__message_error input__message_error_2"></p>
+          <button type="submit" id="modal__button" class="modal__button button button_disabled" disabled>Salvar</button>
         </form>
       </div>
     </div>
@@ -82,10 +82,10 @@
         <h1 class="popup__title">Novo local</h1>
         <form class="popup__form" id="popup__form">
           <input id="input__title" class="popup__form-input" type="text" name="title" placeholder="Título" minlength="2" maxlength="30" required>
-          <p id="input__message3" class="input__message_error input__message3_error"></p>
+          <p id="input__message3" class="input__message_error input__message_error_3"></p>
           <input id="input__link-image" class="popup__form-input" type="url" name="url" placeholder="Link de imagem" required>
-          <p id="input__message4" class="input__message_error input__message4_error"></p>
-          <button type="submit" id="popup__button" class="popup__button button form__btn_disabled" disabled>Criar</button>
+          <p id="input__message4" class="input__message_error input__message_error_4"></p>
+          <button type="submit" id="popup__button" class="popup__button button button_disabled" disabled>Criar</button>
         </form>
       </div>
     </div>
@@ -108,6 +108,7 @@
 
   </div>
   <script type="module" src="./scripts/index.js"></script>
+  <script type="module" src="./scripts/validate.js"></script>
 </body>
 
 </html>
