@@ -8,7 +8,7 @@
  * 2. Evite ajustes no tamanho da fonte após alterações de orientação no iOS.
  */
 
-html {
+ html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -22,6 +22,11 @@ html {
 
 body {
   margin: 0;
+
+
+
+
+  ;
 }
 
 /**
@@ -165,6 +170,7 @@ textarea {
   font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
   line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
 }
 
 /**
