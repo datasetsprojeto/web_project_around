@@ -94,23 +94,22 @@ iconOpenPopup.addEventListener('click', function() {
   titleInput.classList.add("input-bottom");
   linkInput.classList.add("input-bottom");
   titleInput.value = "";
+  linkInput.value = "";
+  popup.addEventListener("click", closeOnClick);
+});
 
-linkInput.value = "";
-popup.addEventListener("click", closeOnClick);
-})
-
-//close popup
+// Fechar popup
 iconClosePopup.addEventListener('click', function() {
-popup.style.display = 'none';
-popup.removeEventListener("click", closeOnClick);
-})
+  popup.style.display = 'none';
+  popup.removeEventListener("click", closeOnClick);
+});
 
-//close popup Image
+// Fechar popup de imagem expandida
 closeExpandedPopup.addEventListener('click', function() {
-expandedPopup.classList.remove('popup-expanded_oppened');
-})
+  expandedPopup.classList.remove('popup-expanded_oppened');
+});
 
-// valida e atualiza as informações do perfil
+// Valida e atualiza as informações do perfil
 export function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   if (nameInput.value != "" && jobInput.value != "") {

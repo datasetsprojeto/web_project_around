@@ -1,5 +1,9 @@
 import Card from './Card.js';
-import FormValidator from "./FormValidator.js";
+import FormValidator from './FormValidator.js';
+import Section from './Section.js';
+import PopupWithImage from './PopupWithImage.js';
+import PopupWithForm from './PopupWithForm.js';
+import UserInfo from './UserInfo.js';
 import {
   formElement,
   popupForm,
@@ -9,35 +13,62 @@ import {
   containerCards,
   initialCards,
   handleProfileFormSubmit
-} from "./utils.js";
+} from './utils.js';
 
-// Event listener para o formulário de perfil
-formElement.addEventListener("submit", handleProfileFormSubmit);
-
-// Renderizar cards iniciais
-initialCards.forEach(card => {
-  const newCard = new Card(card, "#main__template").getCardElement();
-  containerCards.prepend(newCard);
-});
-
-// Adicionar novos cards
-function addNewImageCard(evt) {
-  evt.preventDefault();
-  if (titleInput.value !== "" && linkInput.value !== "") {
-    const newCard = new Card({
-      name: titleInput.value,
-      link: linkInput.value,
-    }, "#main__template").getCardElement();
-    containerCards.prepend(newCard);
-    popup.style.display = "none";
-
-    // Limpar os campos de entrada
-    titleInput.value = "";
-    linkInput.value = "";
+// Instância da classe Section para renderizar os cards
+const cardSection = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    const card = new Card(item, '#main__template', handleCardClick).getCardElement();
+    return card;
   }
+}, '.main__cards');
+
+cardSection.renderItems();
+
+// Instância da classe PopupWithImage para exibir imagens expandidas
+const popupWithImage = new PopupWithImage('.popup-expanded');
+
+// Função para lidar com o clique na imagem do card
+function handleCardClick({ link, name }) {
+  popupWithImage.open({ link, name });
 }
 
-popupForm.addEventListener("submit", addNewImageCard);
+// Instância da classe PopupWithForm para o formulário de novo card
+const popupWithForm = new PopupWithForm('.popup', (formData) => {
+  const newCard = {
+    name: formData.title,
+    link: formData.url
+  };
+  const card = new Card(newCard, '#main__template', handleCardClick).getCardElement();
+  cardSection.addItem(card);
+});
+
+popupWithForm.setEventListeners();
+
+// Instância da classe UserInfo para gerenciar as informações do usuário
+const userInfo = new UserInfo({
+  nameSelector: '.header__name',
+  jobSelector: '.header__job'
+});
+
+// Instância da classe PopupWithForm para o formulário de edição de perfil
+const popupWithProfileForm = new PopupWithForm('.modal', (formData) => {
+  userInfo.setUserInfo({
+    name: formData.name,
+    job: formData.job
+  });
+});
+
+popupWithProfileForm.setEventListeners();
+
+// Event listener para abrir o formulário de edição de perfil
+document.querySelector('.header__icon-edit').addEventListener('click', () => {
+  const { name, job } = userInfo.getUserInfo();
+  document.querySelector('#input__name').value = name;
+  document.querySelector('#input__job').value = job;
+  popupWithProfileForm.open();
+});
 
 // Validação do formulário de perfil
 const formValidatorProfile = new FormValidator({
@@ -47,7 +78,7 @@ const formValidatorProfile = new FormValidator({
   inactiveButtonClass: "button_disabled",
   inputErrorClass: "input__error",
   errorClass: "input__error"
-}, formElement); // Passa o elemento do DOM diretamente
+}, formElement);
 
 formValidatorProfile.enableValidation();
 
@@ -59,6 +90,6 @@ const formValidatorCard = new FormValidator({
   inactiveButtonClass: "button_disabled",
   inputErrorClass: "input__error",
   errorClass: "input__error"
-}, popupForm); // Passa o elemento do DOM diretamente
+}, popupForm);
 
 formValidatorCard.enableValidation();
