@@ -9,7 +9,7 @@
   <meta name="description"
     content="Around The U.S. - Desenvolvimento de um post gallery website com HTML, CSS E JS com paisagens dos Estados Unidos" />
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>Around The U.S.</title>
+  <title>Around The U.S.</title>
   <link rel="stylesheet" href="./pages/index.css">
 </head>
 
@@ -43,17 +43,16 @@
         </ul>
 
         <template id="main__template">
-      <li class="main__card">
-        <div id="main__button-delete" alt="delete button" class="main__button-delete"> </div>
-        <img src=""
-          alt="image" class="main__image" id="main__image">
-        <div class="main__information">
-          <h2 class="main__title-image"></h2>
-          <button id="main__icon " class="main__icon ">
-          </button>
-        </div>
-      </li>
-    </template>
+          <li class="main__card">
+            <div id="main__button-delete" alt="delete button" class="main__button-delete"> </div>
+            <img src="" alt="image" class="main__image" id="main__image">
+            <div class="main__information">
+              <h2 class="main__title-image"></h2>
+              <button id="main__icon " class="main__icon ">
+              </button>
+            </div>
+          </li>
+        </template>
 
       </section>
 
@@ -67,9 +66,11 @@
         <img src="./images/botonX.png" alt="Icon X" class="modal__button-close">
         <h1 class="modal__title">Editar perfil</h1>
         <form class="modal__form" id="modal__form">
-          <input id="input__name" name="name" class="modal__form-input" type="text" placeholder="Name"  minlength="2" maxlength="40"  required>
+          <input id="input__name" name="name" class="modal__form-input" type="text" placeholder="Name" minlength="2"
+            maxlength="40" required>
           <p id="input__name-error" class=" modal__message modal__message_error "></p>
-          <input id="input__job" name="job" class="modal__form-input" type="text" placeholder="Job"  minlength="2" maxlength="200"  required>
+          <input id="input__job" name="job" class="modal__form-input" type="text" placeholder="Job" minlength="2"
+            maxlength="200" required>
           <p id="input__job-error" class="modal__message modal__message_error "></p>
           <button type="submit" id="modal__button" class="modal__button button button_disabled" disabled>Salvar</button>
         </form>
@@ -77,13 +78,16 @@
     </div>
 
     <div class="popup" id="popup">
+      <div class="popup__overlay"></div>
       <div class="popup__window">
         <img src="./images/botonX.png" alt="Icon X" class="popup__button-close">
         <h1 class="popup__title">Novo local</h1>
         <form class="popup__form" id="popup__form">
-          <input id="input__title" class="popup__form-input" type="text" name="title" placeholder="Título" minlength="2" maxlength="30" required>
+          <input id="input__title" class="popup__form-input" type="text" name="title" placeholder="Título" minlength="2"
+            maxlength="30" required>
           <p id="input__title-error" class="popup__message popup__message_error "></p>
-          <input id="input__link-image" class="popup__form-input" type="url" name="url" placeholder="Link de imagem" required>
+          <input id="input__link-image" class="popup__form-input" type="url" name="url" placeholder="Link de imagem"
+            required>
           <p id="input__link-image-error" class="popup__message popup__message_error "></p>
           <button type="submit" id="popup__button" class="popup__button button button_disabled" disabled>Criar</button>
         </form>
@@ -93,12 +97,7 @@
     <div class="popup-expanded" id="popup-expanded">
       <div class="popup popup__overlay"></div>
       <div class="popup-expanded__box">
-        <button
-          type="button"
-          id="popup-expanded__button-close"
-        >
-          <img src="./images/botonX.png"  class="popup-expanded__button-close" alt="closed button" />
-        </button>
+        <img src="./images/botonX.png" class="popup-expanded__button-close" alt="closed button" />
         <img class="popup-expanded__image" src="#" alt="Image" />
         <p class="popup-expanded__image-name"></p>
       </div>

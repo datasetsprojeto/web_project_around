@@ -12,7 +12,8 @@ import {
   popup,
   containerCards,
   initialCards,
-  handleProfileFormSubmit
+  handleProfileFormSubmit,
+  iconOpenPopup
 } from './utils.js';
 
 // Instância da Section
@@ -92,3 +93,8 @@ const formValidatorCard = new FormValidator({
 }, popupForm);
 
 formValidatorCard.enableValidation();
+
+iconOpenPopup.addEventListener('click', () => {
+  formValidatorCard.resetValidation(); // Limpa erros de validação
+  popupWithForm.open(); // Abre o popup
+});

@@ -12,6 +12,9 @@
   z-index: 1;
 }
 
+.popup.popup_opened {
+  display: flex;
+}
 
 .popup__window {
   position: relative;

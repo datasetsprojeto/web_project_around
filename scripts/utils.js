@@ -52,34 +52,8 @@ export const initialCards = [
   },
 ];
 
-export function close() {
-  modal.style.display = 'none';
-  popup.style.display = 'none';
-  expandedPopup.classList.remove('popup_opened');
-}
-
-export function closeOnClick(event) {
-  if (event.target.classList.contains("modal")) {
-    modal.style.display = 'none';
-  }
-  if (event.target.classList.contains("popup")) {
-    popup.style.display = 'none';
-  }
-}
-
-// Abrir popup
-iconOpenPopup.addEventListener('click', function() {
-  popup.style.display = 'flex';
-  titleInput.classList.add("input-bottom");
-  linkInput.classList.add("input-bottom");
-  titleInput.value = "";
-  linkInput.value = "";
-  popup.addEventListener("click", closeOnClick);
-});
-
 // Fechar popup
 iconClosePopup.addEventListener('click', function() {
-  popup.style.display = 'none';
   popup.removeEventListener("click", closeOnClick);
 });
 
