@@ -1,4 +1,4 @@
-#modal {
+.modal {
   display: none;
   position: fixed;
   top: 0;
@@ -12,7 +12,14 @@
   z-index: 1;
 }
 
-.popup__window {
+.modal.modal_opened {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease-in-out;
+}
+
+.modal__window {
   position: relative;
   max-width: 430px;
   width: 100%;
@@ -25,7 +32,7 @@
   z-index: 3;
 }
 
-.popup__title {
+.modal__title {
   width: 358px;
   margin: 0 auto;
   margin-bottom: 30px;
@@ -40,9 +47,18 @@
   text-align: left
 }
 
-#popup__form {
+#modal__form {
   text-align: center;
 }
+
+.modal__form-input {
+  width: 358px;
+  margin: 0 auto;
+  padding-bottom: 13.26px;
+  border: none;
+  border-bottom: 1px solid #545454;
+}
+
 
 .input__name {
   width: 358px;
@@ -73,7 +89,7 @@
   border-bottom: 1px solid #545454;
 }
 
-.popup__button {
+.modal__button {
   width: 358px;
   padding-bottom: 18.49px;
   padding-top: 13.66px;
@@ -92,11 +108,11 @@
   align-items: center;
 }
 
-#popup__button:hover {
+.modal__button-close:hover {
   opacity: 0.5;
 }
 
-.popup__button-close{
+.modal__button-close{
   position: absolute;
   top: -35px;
   right: -35px;
@@ -105,7 +121,7 @@
 
 
 @media screen and (max-width: 500px) {
-  .popup__window {
+  .modal__window {
     position: relative;
     max-width: 282px;
     width: 100%;
@@ -116,7 +132,7 @@
     border-radius: 10px;
   }
 
-  .popup__title {
+  .modal__title {
     margin: 0 auto;
     margin-top: 25px;
     width: 238px;
@@ -145,7 +161,7 @@
   }
 
 
-  #popup__button {
+  #modal__button {
     margin: 0;
     margin-top: 46px;
     margin-bottom: 25px;

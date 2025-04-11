@@ -12,14 +12,9 @@
   z-index: 1;
 }
 
-.popup-expanded_oppened {
+.popup-expanded.popup_opened {
   display: flex;
 }
-
-.popup_opened {
-  display: flex;
-}
-
 .popup-expanded__box {
   position: relative;
   display: flex;
@@ -39,6 +34,10 @@
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.popup-expanded__button-close:hover {
+  opacity: 0.5;
 }
 
 .popup-expanded__image-name {

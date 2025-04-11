@@ -79,10 +79,10 @@ input:valid {
   padding-bottom: 13.04px;
 }
 
-/* input:invalid {
+ input:invalid {
   width: 100%;
   max-width: 358px;
   border: none;
   border-bottom: 1px solid red;
   padding-bottom: 13.04px;
-} */
+}
