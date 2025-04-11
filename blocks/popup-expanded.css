@@ -16,6 +16,10 @@
   display: flex;
 }
 
+.popup_opened {
+  display: flex;
+}
+
 .popup-expanded__box {
   position: relative;
   display: flex;

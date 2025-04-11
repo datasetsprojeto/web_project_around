@@ -67,9 +67,9 @@
         <img src="./images/botonX.png" alt="Icon X" class="modal__button-close">
         <h1 class="modal__title">Editar perfil</h1>
         <form class="modal__form" id="modal__form">
-          <input id="input__name" class="modal__form-input" type="text" placeholder="Name"  minlength="2" maxlength="40"  required>
+          <input id="input__name" name="name" class="modal__form-input" type="text" placeholder="Name"  minlength="2" maxlength="40"  required>
           <p id="input__name-error" class=" modal__message modal__message_error "></p>
-          <input id="input__job" class="input modal__form-input" type="text" placeholder="Job"  minlength="2" maxlength="200"  required>
+          <input id="input__job" name="job" class="modal__form-input" type="text" placeholder="Job"  minlength="2" maxlength="200"  required>
           <p id="input__job-error" class="modal__message modal__message_error "></p>
           <button type="submit" id="modal__button" class="modal__button button button_disabled" disabled>Salvar</button>
         </form>
@@ -94,11 +94,10 @@
       <div class="popup popup__overlay"></div>
       <div class="popup-expanded__box">
         <button
-          class="popup-expanded__button-close"
           type="button"
           id="popup-expanded__button-close"
         >
-          <img src="./images/botonX.png" alt="closed button" />
+          <img src="./images/botonX.png"  class="popup-expanded__button-close" alt="closed button" />
         </button>
         <img class="popup-expanded__image" src="#" alt="Image" />
         <p class="popup-expanded__image-name"></p>

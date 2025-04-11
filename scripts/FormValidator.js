@@ -24,7 +24,7 @@ export default class FormValidator {
   }
 
   _checkInputValidity(inputElement) {
-    const errorElement = this._form.querySelector(`#${inputElement.id}-error`);
+    const errorElement = inputElement.closest('form').querySelector(`#${inputElement.id}-error`);
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement, errorElement);
     } else {
@@ -65,11 +65,21 @@ export default class FormValidator {
     this._toggleButtonState(); // Validação inicial do botão
   }
 
-  resetValidation() {
+  resetValidation(keepButtonState = false) {
     this._inputs.forEach(inputElement => {
       const errorElement = this._form.querySelector(`#${inputElement.id}-error`);
       this._hideInputError(inputElement, errorElement);
     });
-    this._disableButton(); // Desabilita o botão ao resetar
+
+    if (!keepButtonState) {
+      this._disableButton();
+    } else {
+      this._toggleButtonState();
+    }
+  }
+
+  initialize() {
+    this.enableValidation();
+    this.resetValidation();
   }
 }

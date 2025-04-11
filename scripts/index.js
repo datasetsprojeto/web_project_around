@@ -15,7 +15,7 @@ import {
   handleProfileFormSubmit
 } from './utils.js';
 
-// Instância da classe Section para renderizar os cards
+// Instância da Section
 const cardSection = new Section({
   items: initialCards,
   renderer: (item) => {
@@ -26,16 +26,16 @@ const cardSection = new Section({
 
 cardSection.renderItems();
 
-// Instância da classe PopupWithImage para exibir imagens expandidas
-const popupWithImage = new PopupWithImage('.popup-expanded');
+// Imagem expandida
+const popupWithImage = new PopupWithImage('#popup-expanded');
+popupWithImage.setEventListeners();
 
-// Função para lidar com o clique na imagem do card
 function handleCardClick({ link, name }) {
   popupWithImage.open({ link, name });
 }
 
-// Instância da classe PopupWithForm para o formulário de novo card
-const popupWithForm = new PopupWithForm('.popup', (formData) => {
+// Novo card
+const popupWithForm = new PopupWithForm('#popup', (formData) => {
   const newCard = {
     name: formData.title,
     link: formData.url
@@ -43,32 +43,22 @@ const popupWithForm = new PopupWithForm('.popup', (formData) => {
   const card = new Card(newCard, '#main__template', handleCardClick).getCardElement();
   cardSection.addItem(card);
 });
-
 popupWithForm.setEventListeners();
 
-// Instância da classe UserInfo para gerenciar as informações do usuário
+// Info do usuário
 const userInfo = new UserInfo({
   nameSelector: '.header__name',
   jobSelector: '.header__job'
 });
 
-// Instância da classe PopupWithForm para o formulário de edição de perfil
-const popupWithProfileForm = new PopupWithForm('.modal', (formData) => {
+// Formulário de edição de perfil
+const popupWithProfileForm = new PopupWithForm('#modal', (formData) => {
   userInfo.setUserInfo({
     name: formData.name,
     job: formData.job
   });
 });
-
 popupWithProfileForm.setEventListeners();
-
-// Event listener para abrir o formulário de edição de perfil
-document.querySelector('.header__icon-edit').addEventListener('click', () => {
-  const { name, job } = userInfo.getUserInfo();
-  document.querySelector('#input__name').value = name;
-  document.querySelector('#input__job').value = job;
-  popupWithProfileForm.open();
-});
 
 // Validação do formulário de perfil
 const formValidatorProfile = new FormValidator({
@@ -81,6 +71,15 @@ const formValidatorProfile = new FormValidator({
 }, formElement);
 
 formValidatorProfile.enableValidation();
+
+// Abre o modal de edição de perfil com dados e validação resetada
+document.querySelector('.header__icon-edit').addEventListener('click', () => {
+  const { name, job } = userInfo.getUserInfo();
+  document.querySelector('#input__name').value = name;
+  document.querySelector('#input__job').value = job;
+  formValidatorProfile.resetValidation();
+  popupWithProfileForm.open();
+});
 
 // Validação do formulário de novo card
 const formValidatorCard = new FormValidator({

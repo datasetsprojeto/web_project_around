@@ -55,7 +55,7 @@ export const initialCards = [
 export function close() {
   modal.style.display = 'none';
   popup.style.display = 'none';
-  expandedPopup.classList.remove('popup-expanded_oppened');
+  expandedPopup.classList.remove('popup_opened');
 }
 
 export function closeOnClick(event) {
@@ -66,27 +66,6 @@ export function closeOnClick(event) {
     popup.style.display = 'none';
   }
 }
-
-// Abrir modal
-iconOpenModal.addEventListener('click', function() {
-  modal.style.display = 'flex';
-  modal.addEventListener("click", closeOnClick);
-  nameInput.classList.add("input-bottom");
-  jobInput.classList.add("input-bottom");
-});
-
-// Fechar modal
-iconCloseModal.addEventListener('click', function() {
-  modal.style.display = 'none';
-  modal.removeEventListener("click", closeOnClick);
-});
-
-// Fechamento via ESC
-document.addEventListener("keydown", function(evt) {
-  if (evt.key === "Escape") {
-    close();
-  }
-});
 
 // Abrir popup
 iconOpenPopup.addEventListener('click', function() {
@@ -104,11 +83,6 @@ iconClosePopup.addEventListener('click', function() {
   popup.removeEventListener("click", closeOnClick);
 });
 
-// Fechar popup de imagem expandida
-closeExpandedPopup.addEventListener('click', function() {
-  expandedPopup.classList.remove('popup-expanded_oppened');
-});
-
 // Valida e atualiza as informações do perfil
 export function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -117,4 +91,14 @@ export function handleProfileFormSubmit(evt) {
     profileJob.textContent = jobInput.value;
     modal.style.display = 'none';
   }
+}
+
+export function setupEditProfileModal(userInfo, popupWithProfileForm) {
+  const iconOpenModal = document.querySelector('.header__icon-edit');
+  iconOpenModal.addEventListener('click', () => {
+    const { name, job } = userInfo.getUserInfo();
+    document.querySelector('#input__name').value = name;
+    document.querySelector('#input__job').value = job;
+    popupWithProfileForm.open();
+  });
 }
