@@ -104,19 +104,19 @@ function handleCardClick({ link, name }) {
   popupWithImage.open({ link, name });
 }
 
-function handleDeleteClick(cardId) {
-  popupConfirm.setSubmitAction(() => {
-    popupConfirm.renderLoading(true);
+function handleDeleteClick(cardId, cardElement) {
+  popupWithConfirmation.setSubmitAction(() => {
+    popupWithConfirmation.renderLoading(true);
     api.deleteCard(cardId)
       .then(() => {
-        cardElement.remove();
-        popupConfirm.close();
+        cardElement.remove(); // Remover o card do DOM
+        popupWithConfirmation.close();
       })
       .catch(err => console.error(err))
-      .finally(() => popupConfirm.renderLoading(false));
+      .finally(() => popupWithConfirmation.renderLoading(false));
   });
 
-  popupConfirm.open();
+  popupWithConfirmation.open();
 }
 
 function handleLikeClick(cardId, isLiked) {
