@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Renato Soares Pereira" />
+  <meta name="keywords" content="HTML,CSS,JS" />
+  <meta name="description" content="Around The US - Desenvolvimento de um site de galeria de posts com HTML, CSS e JS com paisagens dos Estados Unidos" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <title>Around The US</title>
+  <link rel="stylesheet" href="../pages/index.css">
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="header__container-logo">
+        <img src="../images/Logo.png" alt="logotipo nos EUA" class="header__logo">
+      </div>
+      <div class="header__profile">
+        <div class="header__avatar-container">
+          <img src="../images/iccon-perfil.png" alt="Um velho sorrindo" class="header__avatar">
+          <button type="button" class="header__avatar-edit">
+            <img src="../images/icon-edit-image-perfil.png" alt="Editar avatar" class="header__avatar-edit-icon">
+          </button>
+        </div>
+        <div class="header__container-info">
+          <div class="header__profile-information">
+            <h1 id="header__name" class="header__name">Jacque Cousteau</h1>
+            <img src="../images/icon-editar.png" alt="editar imagem do ícone" class="header__icon-edit">
+          </div>
+          <p id="header__job" class="header__job">Explorador</p>
+        </div>
+        <div class="header__container-button">
+          <button type="button" class="header__button"></button>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="main__container">
+        <ul id="main__cards" class="main__cards">
+          <!-- Os cards serão injetados aqui via JavaScript -->
+        </ul>
+        <template id="main__template">
+          <li class="main__card">
+            <button type="button" class="main__button-delete" aria-label="Excluir card"></button>
+            <img src="" alt="imagem" class="main__image">
+            <div class="main__information">
+              <h2 class="main__title-image"></h2>
+              <div class="main__like-container">
+                <button type="button" class="main__icon"  aria-label="Curtir"></button>
+                <span class="main__like-count">0</span>
+              </div>
+            </div>
+          </li>
+        </template>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__maker">© 2024 Around The US</p>
+    </footer>
+
+    <!-- Modal de edição de perfil -->
+    <div class="modal" id="modal">
+      <div class="modal__window">
+        <img src="../images/botonX.png" alt="Ícone X" class="modal__button-close">
+        <h1 class="modal__title">Editar perfil</h1>
+        <form class="modal__form" id="modal__form">
+          <input id="input__name" name="name" class="modal__form-input" type="text" placeholder="Nome" minlength="2" maxlength="40" required>
+          <p id="input__name-error" class="modal__message modal__message_error"></p>
+          <input id="input__job" name="job" class="modal__form-input" type="text" placeholder="Profissão" minlength="2" maxlength="200" required>
+          <p id="input__job-error" class="modal__message modal__message_error"></p>
+          <button type="submit" id="modal__button" class="modal__button button button_disabled" disabled>Salvar</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Popup de novo cartão -->
+    <div class="popup" id="popup">
+      <div class="popup__window">
+        <img src="../images/botonX.png" alt="Ícone X" class="popup__button-close">
+        <h1 class="popup__title">Novo local</h1>
+        <form class="popup__form" id="popup__form">
+          <input id="input__title" class="popup__form-input" type="text" name="name" placeholder="Título" minlength="2" maxlength="30" required>
+          <p id="input__title-error" class="popup__message popup__message_error"></p>
+          <input id="input__link-image" class="popup__form-input" type="url" name="link" placeholder="Link da imagem" required>
+          <p id="input__link-image-error" class="popup__message popup__message_error"></p>
+          <button type="submit" id="popup__button" class="popup__button button button_disabled" disabled>Criar</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Popup de imagem expandida -->
+    <div class="popup-expanded" id="popup-expanded">
+      <div class="popup popup__overlay"></div>
+      <div class="popup-expanded__box">
+        <img src="../images/botonX.png" class="popup-expanded__button-close" alt="closed button" />
+        <img class="popup-expanded__image" src="#" alt="Image" />
+        <p class="popup-expanded__image-name"></p>
+      </div>
+    </div>
+
+    <!-- Popup de confirmação -->
+    <div class="popup" id="popup-confirm">
+      <div class="popup__window">
+        <img src="../images/botonX.png" alt="Ícone X" class="popup__button-close">
+        <h1 class="popup__title">Tem certeza?</h1>
+        <form class="popup__form">
+          <button type="submit" class="popup__button">Sim</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Popup de atualização de avatar -->
+    <div class="popup" id="avatar-popup">
+      <div class="popup__window">
+        <img src="../images/botonX.png" alt="Ícone X" class="popup__button-close">
+        <h1 class="popup__title">Alterar foto do perfil</h1>
+        <form class="popup__form" id="avatar-form">
+          <input id="input__avatar" class="popup__form-input avatar-form-input" type="url" name="avatar" placeholder="Link da imagem" required>
+          <p id="input__avatar-error" class="popup__message popup__message_error"></p>
+          <button type="submit" id="avatar-button" class="popup__button button button_disabled" disabled>Salvar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="../scripts/index.js"></script>
+</body>
+</html>

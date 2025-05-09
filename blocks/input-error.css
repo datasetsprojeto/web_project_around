@@ -29,7 +29,8 @@
 }
 
 .popup__message_error {
-  margin: 0;
+  margin: 5px 0 30px 30px;
+  color: red;
   text-align: start;
 }
 

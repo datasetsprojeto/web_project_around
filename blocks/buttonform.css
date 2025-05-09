@@ -2,7 +2,8 @@
   margin-top: 18px;
   width: 358px;
   height: 50.15px;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: #e8e8e8;
+  cursor: not-allowed;
   border: 2px solid #c4c4c4;
   border-radius: 2px;
   font-family: "Inter", sans-serif;
