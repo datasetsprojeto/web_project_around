@@ -10,11 +10,11 @@ import UserInfo from './UserInfo.js';
 
 let userId;
 
-// Configuração da API
+// Configuração da API com token válido
 const api = new Api({
   baseUrl: "https://around-api.pt-br.tripleten-services.com/v1",
   headers: {
-    authorization: "3a0867d1-4795-4a66-b02f-4cb159bf2ae9",
+    authorization: "9c17d3cc-114c-4086-9c06-6e9071f6004b",
     "Content-Type": "application/json"
   }
 });
@@ -26,9 +26,8 @@ const userInfo = new UserInfo({
   avatarSelector: '.header__avatar'
 });
 
-// Seção de cards
+// Seção de cards com validação ajustada
 const cardSection = new Section({
-  items: [],
   renderer: (item) => {
     const card = createCard(item);
     return card;
@@ -109,13 +108,12 @@ function handleDeleteClick(cardId, cardElement) {
     popupWithConfirmation.renderLoading(true);
     api.deleteCard(cardId)
       .then(() => {
-        cardElement.remove(); // Remover o card do DOM
+        cardElement.remove();
         popupWithConfirmation.close();
       })
       .catch(err => console.error(err))
       .finally(() => popupWithConfirmation.renderLoading(false));
   });
-
   popupWithConfirmation.open();
 }
 
@@ -175,7 +173,7 @@ formValidatorProfile.enableValidation();
 formValidatorCard.enableValidation();
 formValidatorAvatar.enableValidation();
 
-// Carregamento inicial
+// Carregamento inicial com tratamento de erro
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cards]) => {
     userId = userData._id;
@@ -185,12 +183,17 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
       avatar: userData.avatar
     });
 
-    cardSection.setItems(cards.filter(card =>
-      card && card.name && card.link && card._id
-    ));
+    // Filtro simplificado
+    const validCards = cards.filter(card => card && card.name && card.link);
+
+    cardSection.setItems(validCards);
     cardSection.renderItems();
   })
-  .catch(console.error);
+  .catch(err => {
+    console.error('Erro no carregamento inicial:', err);
+    const container = document.querySelector('.main__cards');
+    container.innerHTML = `<p class="error-message">Falha ao carregar conteúdo. Recarregue a página.</p>`;
+  });
 
 // Event listeners
 document.querySelector('.header__icon-edit').addEventListener('click', () => {

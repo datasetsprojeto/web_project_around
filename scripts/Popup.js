@@ -21,15 +21,16 @@ export default class Popup {
   }
 
   setEventListeners() {
-    this._popup.addEventListener('mousedown', (evt) => {
-      if (
-        evt.target.classList.contains(this._popup.classList[0]) ||
-        evt.target.classList.contains(`${this._popup.classList[0]}__button-close`)
-      ) {
-        this.close();
-      }
-    });
-  }
+  this._popup.addEventListener('mousedown', (evt) => {
+    if (
+      evt.target.classList.contains(this._popup.classList[0]) ||
+      evt.target.classList.contains('popup__button-close') ||
+      evt.target.classList.contains('modal__button-close')
+    ) {
+      this.close();
+    }
+  });
+}
 
   // Novo método que identifica qual classe aplicar para abrir o popup/modal
   _getOpenedClass() {

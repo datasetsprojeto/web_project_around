@@ -11,27 +11,28 @@ export default class Section {
     }
   }
 
-  setItems(items) {
-    this._items = items.filter(item =>
-      item && item.name && item.link // Filtra cards inválidos
-    );
-  }
-
+setItems(items) {
+  this._items = items.filter(item =>
+    item && item.name && item.link
+  );
+}
   renderItems() {
-    this.clear();
-    this._items.forEach(item => {
-      const element = this._renderer(item);
-      if (element) { // Verifica se o elemento é válido
-        this.addItem(element);
-      }
-    });
-  }
+  this.clear();
+  this._items.forEach(item => {
+    const element = this._renderer(item);
+    if (element) {
+      this.addItem(element);
+    } else {
+      console.warn('Item inválido:', item);
+    }
+  });
+}
 
   addItem(element) {
-    if (element && this._container) { // Dupla verificação
-      this._container.prepend(element);
-    }
+  if (element && this._container) {
+    this._container.append(element);
   }
+}
 
   _isValidCard(cardData) {
     return cardData &&

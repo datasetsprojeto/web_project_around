@@ -1,24 +1,23 @@
 // Card.js
 export default class Card {
   constructor(data, templateSelector, handleCardClick,  handleDeleteClick, handleLikeClick, userId) {
-    this._data = data;
-    this._name = data.name;
-    this._link = data.link;
-    this._id = data._id;
-    this._ownerId = data.owner._id;
-    this._likes = Array.isArray(data.likes) ? data.likes : [];
-    this._userId = userId;
-    this._templateSelector = templateSelector;
-    this._handleCardClick = handleCardClick;
-    this._handleDeleteClick = handleDeleteClick;
-    this._handleLikeClick = handleLikeClick;
-
-    if (typeof templateSelector !== "string") {
-      throw new Error("templateSelector deve ser uma string válida.");
-  }
+  this._data = data;
+  this._name = data.name;
+  this._link = data.link;
+  this._id = data._id;
+  // Verifica se data.owner existe e tem _id antes de acessar
+  this._ownerId = data.owner ? data.owner : null; // Alteração aqui
+  this._likes = Array.isArray(data.likes) ? data.likes : [];
+  this._userId = userId;
   this._templateSelector = templateSelector;
-  }
+  this._handleCardClick = handleCardClick;
+  this._handleDeleteClick = handleDeleteClick;
+  this._handleLikeClick = handleLikeClick;
 
+  if (typeof templateSelector !== "string") {
+    throw new Error("templateSelector deve ser uma string válida.");
+  }
+}
   _getTemplate() {
     const templateContent = document
       .querySelector(this._templateSelector)
@@ -31,8 +30,9 @@ export default class Card {
   this._deleteButton = this._element.querySelector(".main__button-delete");
 
   this._likeButton.addEventListener("click", () => {
-    this._handleLikeClick(this._id, this._isLiked());
+    this._handleLikeClick(this._id, this._isLiked);
   });
+
 
   if (this._ownerId === this._userId) {
     this._deleteButton.classList.add('visible');
@@ -55,7 +55,7 @@ export default class Card {
   }
 
   updateLikes(likes) {
-    this._likes = likes;
+    this._isLiked = !this._isLiked;
     this._renderLikes();
   }
 
@@ -67,7 +67,7 @@ export default class Card {
     const likes = Array.isArray(this._likes) ? this._likes : [];
     likeCountElement.textContent = likes.length;
 
-    if (this._isLiked()) {
+    if (this._isLiked) {
       this._likeButton.classList.add("main__icon_black-heart");
     } else {
       this._likeButton.classList.remove("main__icon_black-heart");
