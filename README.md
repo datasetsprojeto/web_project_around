@@ -6,6 +6,8 @@
 
 #  Foi feito a atualização de maneira pela qual as imagens fossem carregadas e atualizadas via JavaScript.
 
-# Atualização: Que seja implementado outras formas mais seguras desde a entrada de dados até o salvamento destes
+# Implementação de API, o uso de servidor e outras formas mais seguras desde a entrada de dados até o salvamento destes
+
+# Melhoria na estruturação do código e organização do mesmo
 
 # Link do projeto: https://datasetsprojeto.github.io/web_project_around/
