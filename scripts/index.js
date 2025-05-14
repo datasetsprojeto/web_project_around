@@ -118,27 +118,17 @@ function handleDeleteClick(cardId, cardElement) {
 }
 
 function handleLikeClick(cardId, isLiked) {
-  if (!cardId) {
-    console.error("ID do card inválido");
-    return;
-  }
-
+  console.log("Iniciando like/unlike para o card:", cardId);
   const action = isLiked ? api.unlikeCard(cardId) : api.likeCard(cardId);
   action
-    .then(updatedCard => {
+    .then((updatedCard) => {
+      console.log("Resposta da API:", updatedCard); // Verifique se há 'likes' aqui
       const cardElement = document.querySelector(`[data-card-id="${cardId}"]`);
-      if (cardElement) {
-        const cardInstance = cardElement._cardInstance;
-        cardInstance.updateLikes(updatedCard.likes || []);
+      if (cardElement && cardElement._cardInstance) {
+        cardElement._cardInstance.updateLikes(updatedCard.likes || []);
       }
     })
-    .catch(err => {
-      console.error('Erro ao atualizar like:', err);
-      if (err.message.includes("404")) {
-        const cardElement = document.querySelector(`[data-card-id="${cardId}"]`);
-        if (cardElement) cardElement.remove();
-      }
-    });
+    .catch((err) => console.error("Erro ao atualizar like:", err));
 }
 
 // Validação de formulários

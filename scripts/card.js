@@ -5,8 +5,7 @@ export default class Card {
   this._name = data.name;
   this._link = data.link;
   this._id = data._id;
-  // Verifica se data.owner existe e tem _id antes de acessar
-  this._ownerId = data.owner ? data.owner : null; // Alteração aqui
+  this._ownerId = data.owner ? data.owner : null;
   this._likes = Array.isArray(data.likes) ? data.likes : [];
   this._userId = userId;
   this._templateSelector = templateSelector;

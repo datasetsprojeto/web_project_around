@@ -58,20 +58,19 @@ export default class Api {
     }).then(this._checkResponse);
   }
 
-  likeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: 'PUT',
-      headers: this._headers
-    }).then(this._checkResponse);
-  }
+likeCard(cardId) {
+  return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+    method: "PUT",
+    headers: this._headers,
+  }).then(this._checkResponse); // A resposta deve conter o card atualizado
+}
 
-  unlikeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: 'DELETE',
-      headers: this._headers
-    }).then(this._checkResponse);
-  }
-
+unlikeCard(cardId) {
+  return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+    method: "DELETE",
+    headers: this._headers,
+  }).then(this._checkResponse); // A resposta deve conter o card atualizado
+}
   updateLikes(likes) {
     this._likes = likes || []; // Garante que seja um array mesmo se undefined
     this._renderLikes();
