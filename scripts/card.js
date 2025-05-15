@@ -5,18 +5,23 @@ export default class Card {
   this._name = data.name;
   this._link = data.link;
   this._id = data._id;
-  this._ownerId = data.owner ? data.owner : null;
+  this._ownerId = data.owner ? data.owner._id || data.owner : null;
   this._likes = Array.isArray(data.likes) ? data.likes : [];
   this._userId = userId;
   this._templateSelector = templateSelector;
   this._handleCardClick = handleCardClick;
   this._handleDeleteClick = handleDeleteClick;
   this._handleLikeClick = handleLikeClick;
-
+ this._isLiked = this.checkIsLiked();
   if (typeof templateSelector !== "string") {
     throw new Error("templateSelector deve ser uma string válida.");
   }
 }
+
+checkIsLiked() { // Método renomeado
+    return this._likes.some(like => like._id === this._userId);
+  }
+
   _getTemplate() {
     const templateContent = document
       .querySelector(this._templateSelector)
@@ -53,27 +58,24 @@ export default class Card {
     return this._likes.some(like => like._id === this._userId);
   }
 
-  updateLikes(likes) {
-    this._isLiked = !this._isLiked;
-    this._renderLikes();
-  }
 
- _renderLikes() {
+updateLikes(updatedLikes) {
+  this._likes = Array.isArray(updatedLikes) ? updatedLikes : [];
+  this._isLiked = this.checkIsLiked();
+  this._renderLikes();
+}
+
+_renderLikes() {
   if (!this._likeButton || !this._element) return;
 
   const likeCountElement = this._element.querySelector('.main__like-count');
   if (likeCountElement) {
-    const likes = Array.isArray(this._likes) ? this._likes : [];
-    likeCountElement.textContent = likes.length;
+    likeCountElement.textContent = this._likes.length;
 
-    if (this._isLiked) {
-      this._likeButton.classList.add("main__icon_black-heart");
-    } else {
-      this._likeButton.classList.remove("main__icon_black-heart");
-    }
+    this._likeButton.classList.remove('main__icon', 'main__icon_black-heart');
+    this._likeButton.classList.add(this._isLiked ? 'main__icon_black-heart' : 'main__icon');
   }
 }
-
 
   removeCard() {
     this._element.remove();

@@ -10,7 +10,7 @@ import UserInfo from './UserInfo.js';
 
 let userId;
 
-// Configuração da API com token válido
+// Configuração da API
 const api = new Api({
   baseUrl: "https://around-api.pt-br.tripleten-services.com/v1",
   headers: {
@@ -26,7 +26,7 @@ const userInfo = new UserInfo({
   avatarSelector: '.header__avatar'
 });
 
-// Seção de cards com validação ajustada
+// Seção de cards
 const cardSection = new Section({
   renderer: (item) => {
     const card = createCard(item);
@@ -45,14 +45,10 @@ const popupWithForm = new PopupWithForm('#popup', (formData) => {
   popupWithForm.renderLoading(true);
   api.addNewCard(formData)
     .then(newCard => {
-      const cardElement = createCard(newCard);
       cardSection.addItem(createCard(newCard), 'prepend');
       popupWithForm.close();
     })
-    .catch((err) => {
-      console.error('Erro ao criar card:', err);
-      setTimeout(() => popupWithForm.close(), 2000);
-    })
+    .catch(console.error)
     .finally(() => popupWithForm.renderLoading(false));
 });
 popupWithForm.setEventListeners();
@@ -111,24 +107,31 @@ function handleDeleteClick(cardId, cardElement) {
         cardElement.remove();
         popupWithConfirmation.close();
       })
-      .catch(err => console.error(err))
+      .catch(console.error)
       .finally(() => popupWithConfirmation.renderLoading(false));
   });
   popupWithConfirmation.open();
 }
 
 function handleLikeClick(cardId, isLiked) {
-  console.log("Iniciando like/unlike para o card:", cardId);
   const action = isLiked ? api.unlikeCard(cardId) : api.likeCard(cardId);
   action
     .then((updatedCard) => {
-      console.log("Resposta da API:", updatedCard); // Verifique se há 'likes' aqui
       const cardElement = document.querySelector(`[data-card-id="${cardId}"]`);
       if (cardElement && cardElement._cardInstance) {
-        cardElement._cardInstance.updateLikes(updatedCard.likes || []);
+        const likes = Array.isArray(updatedCard.likes) ? updatedCard.likes : [];
+        cardElement._cardInstance.updateLikes(likes);
+        if (typeof updatedCard.isLiked === 'boolean') {
+          cardElement._cardInstance._isLiked = updatedCard.isLiked;
+        }
+        cardElement._cardInstance._renderLikes();
+      } else {
+        console.error("Card não encontrado ou instância inválida");
       }
     })
-    .catch((err) => console.error("Erro ao atualizar like:", err));
+    .catch((err) => {
+      console.error("Erro ao atualizar like:", err);
+    });
 }
 
 // Validação de formulários
@@ -159,11 +162,11 @@ const formValidatorAvatar = new FormValidator({
   errorClass: "input__error"
 }, document.querySelector('#avatar-form'));
 
-formValidatorProfile.enableValidation();
-formValidatorCard.enableValidation();
-formValidatorAvatar.enableValidation();
+formValidatorProfile.initialize();
+formValidatorCard.initialize();
+formValidatorAvatar.initialize();
 
-// Carregamento inicial com tratamento de erro
+// Carregamento inicial
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cards]) => {
     userId = userData._id;
@@ -173,19 +176,20 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
       avatar: userData.avatar
     });
 
-    // Filtro simplificado
-    const validCards = cards.filter(card => card && card.name && card.link);
-    const sortedCards = cards.sort((a, b) => {
-      return new Date(b.createdAt) - new Date(a.createdAt);
-    });
+    // Garanta que todos os cards tenham likes definidos
+    const processedCards = cards.map(card => ({
+      ...card,
+      likes: Array.isArray(card.likes) ? card.likes : []
+    }));
 
-    cardSection.setItems(validCards);
+    cardSection.setItems(processedCards);
     cardSection.renderItems();
   })
   .catch(err => {
     console.error('Erro no carregamento inicial:', err);
-    const container = document.querySelector('.main__cards');
-    container.innerHTML = `<p class="error-message">Falha ao carregar conteúdo. Recarregue a página.</p>`;
+    document.querySelector('.main__cards').innerHTML = `
+      <p class="error-message">Falha ao carregar conteúdo. Recarregue a página.</p>
+    `;
   });
 
 // Event listeners

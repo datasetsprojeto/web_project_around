@@ -62,14 +62,14 @@ likeCard(cardId) {
   return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
     method: "PUT",
     headers: this._headers,
-  }).then(this._checkResponse); // A resposta deve conter o card atualizado
+  }).then(this._checkResponse);
 }
 
 unlikeCard(cardId) {
   return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
     method: "DELETE",
     headers: this._headers,
-  }).then(this._checkResponse); // A resposta deve conter o card atualizado
+  }).then(this._checkResponse);
 }
   updateLikes(likes) {
     this._likes = likes || []; // Garante que seja um array mesmo se undefined

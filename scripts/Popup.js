@@ -20,12 +20,13 @@ export default class Popup {
     }
   }
 
-  setEventListeners() {
+setEventListeners() {
   this._popup.addEventListener('mousedown', (evt) => {
     if (
-      evt.target.classList.contains(this._popup.classList[0]) ||
-      evt.target.classList.contains('popup__button-close') ||
-      evt.target.classList.contains('modal__button-close')
+      evt.target.classList.contains(this._popup.classList[0]) || // Classe principal do popup
+      evt.target.classList.contains('popup__button-close') ||     // Botão de fechar padrão
+      evt.target.classList.contains('modal__button-close') ||     // Botão de fechar do modal
+      evt.target.classList.contains('popup-expanded__button-close') // Botão de fechar da imagem expandida
     ) {
       this.close();
     }
