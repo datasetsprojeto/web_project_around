@@ -46,7 +46,7 @@ const popupWithForm = new PopupWithForm('#popup', (formData) => {
   api.addNewCard(formData)
     .then(newCard => {
       const cardElement = createCard(newCard);
-      cardSection.addItem(cardElement);
+      cardSection.addItem(createCard(newCard), 'prepend');
       popupWithForm.close();
     })
     .catch((err) => {
@@ -175,6 +175,9 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 
     // Filtro simplificado
     const validCards = cards.filter(card => card && card.name && card.link);
+    const sortedCards = cards.sort((a, b) => {
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    });
 
     cardSection.setItems(validCards);
     cardSection.renderItems();

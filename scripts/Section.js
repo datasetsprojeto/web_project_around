@@ -28,11 +28,15 @@ setItems(items) {
   });
 }
 
-  addItem(element) {
-  if (element && this._container) {
-    this._container.prepend(element);
+  addItem(element, position = 'append') {
+    if (element && this._container) {
+      if (position === 'prepend') {
+        this._container.prepend(element);
+      } else {
+        this._container.append(element);
+      }
+    }
   }
-}
 
   _isValidCard(cardData) {
     return cardData &&
